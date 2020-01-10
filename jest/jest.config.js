@@ -23,7 +23,10 @@ module.exports = {
     "<rootDir>/jest/configureEnzyme.js",
     "jest-canvas-mock",
   ],
-  setupTestFrameworkScriptFile: "<rootDir>/packages/webviz-core/src/test/setupTestFramework.js",
+  setupFilesAfterEnv: [
+    "<rootDir>/packages/webviz-core/src/test/setupTestFramework.js",
+    "@undefinedlabs/scope-agent/jest/setupTests.js",
+  ],
   moduleNameMapper: {
     "worker-loader!./PngWorker.js": "<rootDir>/packages/webviz-core/src/test/MockWorker.js",
     "worker-loader!.*/UserNodePlayer/.+Worker":
@@ -32,4 +35,6 @@ module.exports = {
     "react-monaco-editor": "<rootDir>/packages/webviz-core/src/test/stubs/MonacoEditor.js",
     "\\.css$": "<rootDir>/jest/styleMock.js",
   },
+  testRunner: "@undefinedlabs/scope-agent/jest/testRunner.js",
+  runner: "@undefinedlabs/scope-agent/jest/runner.js",
 };
